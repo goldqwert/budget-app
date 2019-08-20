@@ -1,22 +1,23 @@
-"use strict"
 
-let money = prompt("Ваш бюджет на месяц?");
-let time = prompt("Введите дату в формате YYYY-MM-DD");
 
-appData = {
-    budget: "",
-    timeData: "",
+let money = prompt("Ваш бюджет на месяц?", "");
+let time = prompt("Введите дату в формате YYYY-MM-DD", "");
+
+let appData = {
+    budget: money,
+    timeData: time,
     expenses: {},
     optionalExpenses: {},
     income: [],
-    savings: false;
-}
+    savings: false
+};
 
-for (i = 0; i < 2; i++) {
-let a = prompt("Введите обязательную статью расходов в этом месяце"),
-    b = prompt("Во сколько обойдется?");
+let a1 = prompt("Введите обязательную статью расходов в этом месяце", ''),
+	a2 = prompt("Во сколько обойдется?", ''),
+	a3 = prompt("Введите обязательную статью расходов в этом месяце", ''),
+	a4 = prompt("Во сколько обойдется?", '');
 
-    expenses[a] = b;
-}
+appData.expenses.a1 = a2;
+appData.expenses.a3 = a4;
 
-alert(money/30);
+alert(appData.budget / 30);
