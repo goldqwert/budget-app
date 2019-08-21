@@ -1,5 +1,3 @@
-
-
 let money;
 let time;
 
@@ -18,7 +16,7 @@ let appData = {
     budget: money, // переменные выше
     timeData: time, // переменные выше
     expenses: {}, // 1 метод 
-    optionalExpenses: {}, 
+    optionalExpenses: {},
     income: [],
     savings: true,
     nextQuestions: function () {
@@ -39,7 +37,8 @@ let appData = {
         appData.moneyPerDay = appData.budget / 30;
 
         alert("Бюджет на 1 день составляет " + appData.moneyPerDay + "руб");
-    }, major: function() {
+    },
+    major: function () {
         if (appData.moneyPerDay < 100) {
             console.log("Это минимальный уровень достатка!");
         } else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
@@ -49,36 +48,41 @@ let appData = {
         } else {
             console.log("Произошла ошибка");
         }
-    }, depositQuestions: function() {
+    },
+    depositQuestions: function () {
         if (appData.savings == true) {
             let save = +prompt("Какова сумма накоплений?", ""),
                 percent = +prompt("Под какой процент?", "");
-    
+
             appData.monthIncome = save / 100 / 12 * percent;
             alert("Доход с Вашего депозита в месяц: " + appData.monthIncome);
         }
-    }, nextQuestions2: function() {
+    },
+    nextQuestions2: function () {
 
         for (let i = 1; i <= 3; i++) {
             let questionOptExpenses = prompt("На что вы можете необязательно потратить деньги?", "");
             appData.optionalExpenses[i] = questionOptExpenses;
             console.log(appData.optionalExpenses);
         }
-    
-    
-    }, addMoney: function () {
+
+
+    },
+    addMoney: function () {
         let items = prompt("Что принесет дополнительный доход?(!через запятую!)", "");
-        if (typeof(items) != "string" || items == "" || typeof(items) == null) {
+        if (typeof (items) != "string" || items == "" || typeof (items) == null) {
             console.log("Вы ввели некорректные данные!");
         } else {
-        appData.income = items.split(", ");
-        appData.income.push(prompt("Может что-то еще?", ""));
-        appData.income.sort();
+            appData.income = items.split(", ");
+            appData.income.push(prompt("Может что-то еще?", ""));
+            appData.income.sort();
 
-        appData.income.forEach(function (items, i, mass) {
-            alert("Способы доп.заработка: "(i+1) + items);
+            appData.income.forEach(function (items, i) {
+                alert("Способы доп.заработка: " + (i + 1) + " " + items);
+
+
+            });
         }
-        };
-    }
 
+    }
 };
