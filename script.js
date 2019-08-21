@@ -1,3 +1,18 @@
+let startsum = document.getElementById("start");
+let budgetValue = document.getElementsByClassName("budget-value")[0];
+let daybudgetValue = document.getElementsByClassName("daybudget-value")[0];
+let levelValue = document.getElementsByClassName("level-value")[0];
+let expensesValue = document.getElementsByClassName("expenses-value")[0];
+let optionalExpensesValue = document.getElementsByClassName("optionalexpenses-value")[0];
+let incomeValue = document.getElementsByClassName("income-value")[0];
+let monthSavingsValue = document.getElementsByClassName("monthsavings-value")[0];
+let yearSavingsValue = document.getElementsByClassName("yearsavings-value")[0];
+let inputChooseExpenses = document.getElementsByClassName("expenses-item")[0];
+let expensesItemBTN = document.getElementsByTagName('button')[0];
+let optionalExpensesBTN = document.getElementsByTagName('button')[1];
+let countBudgetBTN = document.getElementsByTagName('button')[2];
+let optionalExpenses
+
 let money;
 let time;
 
