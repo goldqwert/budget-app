@@ -7,30 +7,57 @@ let optionalExpensesValue = document.getElementsByClassName("optionalexpenses-va
 let incomeValue = document.getElementsByClassName("income-value")[0];
 let monthSavingsValue = document.getElementsByClassName("monthsavings-value")[0];
 let yearSavingsValue = document.getElementsByClassName("yearsavings-value")[0];
-let inputChooseExpenses = document.getElementsByClassName("expenses-item")[0];
+let expensesITEM = document.getElementsByClassName("expenses-item");
 let expensesItemBTN = document.getElementsByTagName('button')[0];
 let optionalExpensesBTN = document.getElementsByTagName('button')[1];
 let countBudgetBTN = document.getElementsByTagName('button')[2];
-let optionalExpenses
+let optionalExpenses = document.querySelectorAll('.optionalexpenses-item');
+let chooseIncome = document.querySelector('.choose-income');
+let yearValue = document.querySelector('.year-value');
+let monthValue = document.querySelector('.month-value');
+let dayValue = document.querySelector('.day-value');
 
 let money;
 let time;
 
-function start() {
-    money = +prompt("Ваш бюджет на месяц?", "");
+startBtn = addEventListener('click', function() {
     time = prompt("Введите дату в формате YYYY-MM-DD", "");
+    money = +prompt("Ваш бюджет на месяц?", "");
 
     while (isNaN(money) || money == "" || money == null) {
         money = +prompt("Ваш бюджет на месяц?", "");
     }
+    appData.budget = money;
+    appData.timeData = time;
+    budgetValue.textContent = money.toFixed();
+    yearValue.value = new Date(Date.parse(time)).getFullYear();
+    monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
+    dayValue.value = new Date(Date.parse(time)).getDate();
 
-}
-start();
+});
+
+expensesItemBTN.addEventListener('click', function () {
+     let sum = 0;
+    
+     for (let i = 0; i < expensesITEM.length; i++) {
+        let a = expensesItem[i].value,
+            b = expensesItem[++i].value;
+
+        if (typeof (a) === 'string' && typeof (a) != null && typeof (b) != null && a != "" && b != "" && a.length < 50 && b.length < 50) {
+            appData.expenses[a] = b;
+            sum = sum + +b
+        } else {
+            i--;
+        }
+
+    }
+    expensesValue.textContent = sum;
+});
 
 let appData = {
-    budget: money, // переменные выше
-    timeData: time, // переменные выше
-    expenses: {}, // 1 метод 
+    budget: money, 
+    timeData: time, 
+    expenses: {},
     optionalExpenses: {},
     income: [],
     savings: true,
